@@ -11,16 +11,16 @@ export default function BlogId({ blog }) {
       <Head>
         <title>{blog.title} | Next.js Undew</title>
       </Head>
-    <main className={styles.main}>
-      <h1 className={styles.title}>{blog.title}</h1>
-      <Date dateString={blog.publishedAt}/>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.content}`,
-        }}
-        className={styles.post}
-      />
-    </main>
+      <main className={styles.main}>
+        <h1 className={styles.title}>{blog.title}</h1>
+        <Date dateString={blog.publishedAt} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${blog.content}`,
+          }}
+          className={styles.post}
+        />
+      </main>
     </Layout>
   );
 }
