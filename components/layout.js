@@ -8,13 +8,13 @@ export const siteTitle = "JAMstack Undew"
 export default function Layout({children,home}){
   return(
     <>
-    <Head>
+            <Head>
           <meta
           name="description"
           content="undewのブログです。"
         />
         <meta name="og:title" content={siteTitle}/>
-    </Head>
+        </Head>
     <div className={styles.container}>
     <header className={styles.header}>
       {home ? (

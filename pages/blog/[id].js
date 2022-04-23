@@ -2,10 +2,14 @@
 import { client } from "../../libs/client";
 import styles from '../../styles/Home.module.scss';
 import Layout from '../../components/layout';
+import Head from 'next/head';
 
 export default function BlogId({ blog }) {
   return (
     <Layout>
+      <Head>
+        <title>{blog.title} | Next.js Undew</title>
+      </Head>
     <main className={styles.main}>
       <h1 className={styles.title}>{blog.title}</h1>
       <p className={styles.publishedAt}>{blog.publishedAt}</p>
