@@ -3,6 +3,7 @@ import { client } from "../../libs/client";
 import styles from '../../styles/Home.module.scss';
 import Layout from '../../components/layout';
 import Head from 'next/head';
+import Date from '../../components/date'
 
 export default function BlogId({ blog }) {
   return (
@@ -12,7 +13,7 @@ export default function BlogId({ blog }) {
       </Head>
     <main className={styles.main}>
       <h1 className={styles.title}>{blog.title}</h1>
-      <p className={styles.publishedAt}>{blog.publishedAt}</p>
+      <Date dateString={blog.publishedAt}/>
       <div
         dangerouslySetInnerHTML={{
           __html: `${blog.content}`,
