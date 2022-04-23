@@ -1,9 +1,11 @@
 // pages/blog/[id].js
 import { client } from "../../libs/client";
 import styles from '../../styles/Home.module.scss';
+import Layout from '../../components/layout';
 
 export default function BlogId({ blog }) {
   return (
+    <Layout>
     <main className={styles.main}>
       <h1 className={styles.title}>{blog.title}</h1>
       <p className={styles.publishedAt}>{blog.publishedAt}</p>
@@ -14,6 +16,7 @@ export default function BlogId({ blog }) {
         className={styles.post}
       />
     </main>
+    </Layout>
   );
 }
 

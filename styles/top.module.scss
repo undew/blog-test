@@ -1,0 +1,34 @@
+.list {
+  padding: 20px 0px;
+  font-size: 20px;
+  line-height: 32px;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(239, 239, 239);
+
+  >.date {
+    padding-right: 20px;
+    color: rgb(180, 180, 180);
+  }
+
+
+  &:hover {
+    background: rgb(239, 239, 239)
+  }
+}
+
+@media screen and(max-width:480px) {
+  .main {
+    padding: 0px 20px;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    >.date {
+      font-size: 14px;
+    }
+
+  }
+}
