@@ -5,8 +5,14 @@ import Layout, { siteTitle } from '../components/layout';
 import Head from 'next/head';
 import styles from '../styles/top.module.scss'
 import Date from '../components/date';
+import type {blog} from '../types/blog';
+import {GetStaticProps} from 'next';
+type Props = {
+  blog:Array<blog>;
+}
 
-export default function Home({ blog }) {
+export default function Home({ blog }:Props) {
+
   return (
     <Layout home>
       <Head>
@@ -35,7 +41,7 @@ export default function Home({ blog }) {
 }
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async () => {
+export const getStaticProps:GetStaticProps = async () => {
   const data = await client.get({ endpoint: 'blog' });
 
   // オブジェクトを返すため、囲いは{}

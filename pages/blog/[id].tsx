@@ -4,8 +4,14 @@ import styles from '../../styles/Home.module.scss';
 import Layout from '../../components/layout';
 import Head from 'next/head';
 import Date from '../../components/date'
+import type {blog} from '../../types/blog';
+import { GetStaticPaths, GetStaticProps } from "next";
 
-export default function BlogId({ blog }) {
+type Props = {
+  blog: blog;
+}
+
+export default function BlogId({ blog }: Props) {
   return (
     <Layout>
       <Head>
@@ -26,16 +32,16 @@ export default function BlogId({ blog }) {
 }
 
 // 静的生成のためのパスを指定します
-export const getStaticPaths = async () => {
+export const getStaticPaths:GetStaticPaths = async () => {
   const data = await client.get({ endpoint: "blog" });
 
-  const paths = data.contents.map((content) => `/blog/${content.id}`);
+  const paths = data.contents.map((content) => `/blog/${content.id as string}`);
   return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async (context) => {
-  const id = context.params.id;
+export const getStaticProps:GetStaticProps = async (context) => {
+  const id = context.params.id as string;
   const data = await client.get({ endpoint: "blog", contentId: id });
 
   return {

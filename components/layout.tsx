@@ -5,7 +5,14 @@ import styles from './layout.module.scss';
 
 const name = "undew"
 export const siteTitle = "JAMstack Undew"
-export default function Layout({ children, home }) {
+
+export default function Layout({
+  children,
+  home
+}: {
+  children: React.ReactNode,
+  home?: boolean
+}) {
   return (
     <>
       <Head>
@@ -32,6 +39,7 @@ export default function Layout({ children, home }) {
           ) : (
             <>
               <Link href="/">
+                <a>
                 <Image
                   priority
                   src="/images/profile.jpg"
@@ -39,6 +47,7 @@ export default function Layout({ children, home }) {
                   width={144}
                   alt={name}
                 />
+                </a>
               </Link>
               <h2>
                 <Link href="/">
