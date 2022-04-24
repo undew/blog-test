@@ -10,14 +10,17 @@ import { GetStaticPaths, GetStaticProps } from "next";
 type Props = {
   blog: blog;
 }
-
 export default function BlogId({ blog }: Props) {
   console.log(blog.eyecatch.url);
+  const siteUrl = `https://undew.microcms.io/api/v1/blog/${blog.id}`;
   return (
     <Layout>
       <Head>
-        <meta property="twitter:card" content={blog.eyecatch.url}/>
+        <meta property="twitter:card" content="summary"/>
         <meta property="twitter:title" content={blog.title}/>
+        <meta property="twitter:url" content={siteUrl}/>
+        <meta property="twitter:description" content={blog.content}/>
+        <meta property="twitter:image" content={blog.eyecatch.url}/>
         <meta property="og:image" content={blog.eyecatch.url} />
         <meta property="og:title" content={blog.title} key="title"/>
         <title>{blog.title} | Next.js Undew</title>
