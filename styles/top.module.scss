@@ -1,3 +1,9 @@
+.main {
+  >.countBlog {
+    color: rgb(169, 169, 169);
+  }
+}
+
 .list {
   padding: 20px 0px;
   font-size: 20px;
@@ -10,7 +16,6 @@
     color: rgb(180, 180, 180);
   }
 
-
   &:hover {
     background: rgb(239, 239, 239)
   }
@@ -20,6 +25,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.cardList {
+  padding: 20px 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+
+  >.card {
+    width: auto;
+    max-width: 300px;
+  }
 }
 
 @media screen and(max-width:480px) {

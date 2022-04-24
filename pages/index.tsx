@@ -4,10 +4,11 @@ import { client } from '../libs/client';
 import Layout, { siteTitle } from '../components/layout';
 import Head from 'next/head';
 import styles from '../styles/top.module.scss'
-import Date from '../components/date';
 import type {blog} from '../types/blog';
 import {GetStaticProps} from 'next';
 import Menu from '../components/menu';
+import Content from '../components/content';
+
 // type Props = {
 //   blog:Array<blog>;
 // }
@@ -35,16 +36,14 @@ export default function Home({ blog,category }) {
         <h2>記事一覧</h2>
         <Menu onClick={(list:string)=>handleClick(list)} category={category}/>
         </div>
-        <ul>
+        <span className={styles.countBlog}>投稿件数：{array.length} 件</span>
+        <ul className={styles.cardList}>
           {array.map((blog) => (
             <React.Fragment key={blog.id}>
               <Link href={`/blog/${blog.id}`}>
-                <li className={styles.list}>
-                  <span className={styles.date}>
-                    <Date dateString={blog.publishedAt} />
-                  </span>
-                  <span className={styles.title}>{blog.title}</span>
-                </li>
+                <a className={styles.card}>
+                <Content title={blog.title} date={blog.publishedAt} image={blog.eyecatch.url}/>
+                </a>
               </Link>
             </React.Fragment>
           ))}

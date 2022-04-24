@@ -65,6 +65,9 @@ export default function Layout({
             </Link>
           </div>
         )}
+        <footer className={styles.bottom}>
+          <p>2022.04.24 Undew Blog</p>
+        </footer>
       </div>
     </>
   )

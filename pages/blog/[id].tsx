@@ -11,7 +11,6 @@ type Props = {
   blog: blog;
 }
 export default function BlogId({ blog }: Props) {
-  console.log(blog.eyecatch.url);
   const siteUrl = `https://undew.microcms.io/api/v1/blog/${blog.id}`;
   return (
     <Layout>
