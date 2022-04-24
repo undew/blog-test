@@ -12,10 +12,11 @@ type Props = {
 }
 
 export default function BlogId({ blog }: Props) {
+  console.log(blog.eyecatch.url);
   return (
     <Layout>
       <Head>
-        <meta property="twitter:image" content={blog.eyecatch.url}/>
+        <meta property="twitter:card" content={blog.eyecatch.url}/>
         <meta property="twitter:title" content={blog.title}/>
         <meta property="og:image" content={blog.eyecatch.url} />
         <meta property="og:title" content={blog.title} key="title"/>
