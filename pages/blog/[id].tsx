@@ -15,6 +15,10 @@ export default function BlogId({ blog }: Props) {
   return (
     <Layout>
       <Head>
+        <meta property="twitter:image" content={blog.eyecatch.url}/>
+        <meta property="twitter:title" content={blog.title}/>
+        <meta property="og:image" content={blog.eyecatch.url} />
+        <meta property="og:title" content={blog.title} key="title"/>
         <title>{blog.title} | Next.js Undew</title>
       </Head>
       <main className={styles.main}>

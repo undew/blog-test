@@ -16,6 +16,12 @@
   }
 }
 
+.blogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media screen and(max-width:480px) {
   .main {
     padding: 0px 20px;

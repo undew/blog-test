@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Link from "next/link";
 import { client } from '../libs/client';
 import Layout, { siteTitle } from '../components/layout';
@@ -7,11 +7,23 @@ import styles from '../styles/top.module.scss'
 import Date from '../components/date';
 import type {blog} from '../types/blog';
 import {GetStaticProps} from 'next';
-type Props = {
-  blog:Array<blog>;
-}
+import Menu from '../components/menu';
+// type Props = {
+//   blog:Array<blog>;
+// }
 
-export default function Home({ blog }:Props) {
+export default function Home({ blog,category }) {
+  const [array,setArray] = React.useState(blog);
+  const handleClick = (list) =>{
+    if(list !== 'すべて'){
+    const result = blog.filter((item)=>{
+      return item.category.name.toLowerCase().match(list.toLowerCase());
+    })
+    setArray(result);
+    }else{
+      setArray(blog);
+    }
+  }
 
   return (
     <Layout home>
@@ -19,9 +31,12 @@ export default function Home({ blog }:Props) {
         <title>{siteTitle}</title>
       </Head>
       <section className={styles.main}>
+        <div className={styles.blogHeader}>
         <h2>記事一覧</h2>
+        <Menu onClick={(list:string)=>handleClick(list)} category={category}/>
+        </div>
         <ul>
-          {blog.map((blog) => (
+          {array.map((blog) => (
             <React.Fragment key={blog.id}>
               <Link href={`/blog/${blog.id}`}>
                 <li className={styles.list}>
@@ -31,7 +46,6 @@ export default function Home({ blog }:Props) {
                   <span className={styles.title}>{blog.title}</span>
                 </li>
               </Link>
-              {/* <li>{blog.eyecatch}</li> */}
             </React.Fragment>
           ))}
         </ul>
@@ -43,11 +57,12 @@ export default function Home({ blog }:Props) {
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps:GetStaticProps = async () => {
   const data = await client.get({ endpoint: 'blog' });
-
+  const categoryData = await client.get({endpoint:'categories'})
   // オブジェクトを返すため、囲いは{}
   return {
     props: {
       blog: data.contents,
+      category:categoryData.contents,
     }
   }
 

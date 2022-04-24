@@ -6,10 +6,13 @@ export type blog = {
   revisedAt: string
   title: string
   content:string
-  eye_catch: {
+  eyecatch: {
     url: string
     height: number
     width: number
+  }
+  category: {
+    name:string
   }
   tag: string
 }
