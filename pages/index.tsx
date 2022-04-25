@@ -15,9 +15,9 @@ import Content from '../components/content';
 
 export default function Home({ blog,category }) {
   const [array,setArray] = React.useState(blog);
-  const handleClick = (list) =>{
+  const handleClick = (list: string) =>{
     if(list !== 'すべて'){
-    const result = blog.filter((item)=>{
+    const result = blog.filter((item: { category: { name: string; }; })=>{
       return item.category.name.toLowerCase().match(list.toLowerCase());
     })
     setArray(result);

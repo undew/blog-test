@@ -7,7 +7,7 @@ import Date from './date';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import styles from '../styles/card.module.scss'
 
-export default function MultiActionAreaCard({ image, title, date }) {
+export default function MultiActionAreaCard({ image, title, date }): JSX.Element {
   return (
     <div className={styles.card}>
       <Card sx={{ maxWidth: 345 }}>

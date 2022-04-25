@@ -7,11 +7,11 @@ export default function BasicMenu({ onClick, category }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
+  const handleClick = (event: { currentTarget: any; }) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (content) => {
+  const handleClose = (content: boolean | React.ReactChild | React.ReactFragment) => {
     console.log(content);
     onClick(content);
     setAnchorEl(null);
@@ -37,7 +37,7 @@ export default function BasicMenu({ onClick, category }) {
         }}
       >
         <MenuItem onClick={(content) => handleClose('すべて')}>すべて</MenuItem>
-        {category.map((item) => (
+        {category.map((item: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; id: React.Key; }) => (
           <MenuItem onClick={(content) => handleClose(item.name)} key={item.id}>{item.name}</MenuItem>
         ))}
       </Menu>
